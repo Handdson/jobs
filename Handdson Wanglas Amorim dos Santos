@@ -1,0 +1,40 @@
+# Lista de candidatos com resultados em e, t, p e s
+candidatos = [
+    {"nome": "Candidato 1", "e": 4, "t": 4, "p": 8, "s": 8},
+    {"nome": "Candidato 2", "e": 3, "t": 5, "p": 7, "s": 7},
+    {"nome": "Candidato 3", "e": 5, "t": 3, "p": 9, "s": 6},
+    {"nome": "Candidato 4", "e": 7, "t": 6, "p": 5, "s": 5},
+    {"nome": "Candidato 5", "e": 4, "t": 4, "p": 8, "s": 8},
+]
+
+# Função para buscar candidatos com base em critérios
+def buscar_candidatos(nota_e, nota_t, nota_p, nota_s):
+    candidatos_aprovados = []
+
+    for candidato in candidatos:
+        if (
+            candidato["e"] >= nota_e
+            and candidato["t"] >= nota_t
+            and candidato["p"] >= nota_p
+            and candidato["s"] >= nota_s
+        ):
+            candidatos_aprovados.append(candidato)
+
+    return candidatos_aprovados
+
+# Solicita ao usuário as notas mínimas desejadas
+nota_e = int(input("Digite a nota mínima em e: "))
+nota_t = int(input("Digite a nota mínima em t: "))
+nota_p = int(input("Digite a nota mínima em p: "))
+nota_s = int(input("Digite a nota mínima em s: "))
+
+# Chama a função para buscar candidatos
+candidatos_aprovados = buscar_candidatos(nota_e, nota_t, nota_p, nota_s)
+
+# Exibe os candidatos aprovados
+if candidatos_aprovados:
+    print("Candidatos aprovados com as notas mínimas especificadas:")
+    for candidato in candidatos_aprovados:
+        print(f"Nome: {candidato['nome']}, Notas: e={candidato['e']}, t={candidato['t']}, p={candidato['p']}, s={candidato['s']}")
+else:
+    print("Nenhum candidato atende aos critérios especificados.")
